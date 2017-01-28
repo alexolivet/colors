@@ -1,0 +1,41 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <title>Color Like Masters</title>
+    <meta name="description" content="Demo for using Rijksmuseum API to display some of its data">
+
+    <link rel="stylesheet" type="text/css" href="css/main_style.css">
+    <meta name="author" content="Alex Olivet Fernandez">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <header>
+        <h1>Color Like Masters</h1>
+      </header>
+
+      <div class="outer-input-div">
+        <div class="inner-input-div">
+          <input id="query" type="search" placeholder="Artist, Painting, or anything!">
+          <input type="button" value="Search" id="search">
+        </div>
+      </div>
+
+      <div id="result"></div>
+      <canvas id="drawing1">Your browser does not support the HTML5 canvas tag.</canvas>
+      <div id="colors">
+        <div class="container">
+          <div class="row">
+          </div>
+        </div>
+      </div>
+      <br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+
+      <script type="text/javascript" src="js/script.js"></script>
+      <script src="js/color-thief.js"></script>
+    </div>
+  </body>
+  </html>
