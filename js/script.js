@@ -41,10 +41,10 @@ function doSearch() {
       $("#result img").each(function (i, image){ //for each image create a different id
         image.id = "image" + (i + 1);
       });
-     $("#result a").each(function (i, anchor){ //for each anchor create a 
+     $("#result a").each(function (i, anchor){ //for each anchor set the following attributes:
       //anchor.id = "anchor" + (i + 1);
-        anchor.setAttribute('onclick', 'return false;'); // needed so image does not jump
-        anchor.setAttribute('data-id', + (i + 1)); // set different data id needed for on event
+        anchor.setAttribute('onclick', 'return false;'); // return false needed so image does not jump when clicked
+        anchor.setAttribute('data-id', + (i + 1)); // set different data-id attribute needed for on event
       });
      resultD.innerHTML += "<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>";
    }   
@@ -58,7 +58,7 @@ function doSearch() {
 $(document).on('click','.anchor', function () {
   $("#colors").show(); // show the color div for color palette
     var anchor_id = $(this).attr('data-id'); //get the value from the data id
-setTimeout(function() { //timeout starts
+
     var c=document.getElementById("drawing1"); // this is the canvas
     var ctx=c.getContext("2d"); // canvas rendering
     var img=document.getElementById("image"+anchor_id); //this will attach the id for that image here
@@ -66,11 +66,34 @@ setTimeout(function() { //timeout starts
     c.width = img.width ;
     ctx.drawImage(img,0,0,c.width, c.height);
     $("#result").hide(); // result div is no longer needed - so hide it
+    setTimeout(function() { //timeout starts
         var colorThief = new ColorThief(); // color thief 
         var color = colorThief.getPalette(img, 18); // color palette - number of colors returned
         var newHTML = $.map(color, function(value) { // rgb value returned are then placed in csss inline style
      return('<div class="col-2-sm" style="background-color:rgb(' + value.join(', ') + ')">&nbsp;</div>'); // return the colors into the grid cell
    });
     $(".row").html(newHTML.join('')); // place the color palette into the dedicated place
-}, 500); //timeout ends
+}, 1500); //timeout ends
 });
+
+      // this makes the canvas responsive
+      //may need revisit
+      //helpfull page > https://mobiforge.com/design-development/html5-mobile-web-canvas
+      var canvas;
+      var canvasWidth;
+      var ctx;
+ 
+      function init() {
+        canvas = document.getElementById('drawing1');
+        if (canvas.getContext) {
+          ctx = canvas.getContext("2d");
+          window.addEventListener('resize', resizeCanvas, false);
+          window.addEventListener('orientationchange', resizeCanvas, false);
+          resizeCanvas();
+        }
+      }
+ 
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }

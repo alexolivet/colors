@@ -9,7 +9,7 @@
     background-image:     -ms-linear-gradient(top, $start-colour, $end-colour);
     background-image:      -o-linear-gradient(top, $start-colour, $end-colour);
     background-image:         linear-gradient(top, $start-colour, $end-colour);
-    filter:            progid:DXImageTransform.Microsoft.gradient(start-colourStr='#{$start-colour}', end-colourStr='#{$end-colour}');
+    filter:     progid:DXImageTransform.Microsoft.gradient(start-colourStr='#{$start-colour}', end-colourStr='#{$end-colour}');
 }
 
 
@@ -30,12 +30,14 @@ h1 {
     text-align: center;
 }
 
-img {
-    width: 60%;
+img{
+    max-width:100% !important;
+    height:auto;
+    display:block;
     border-radius: 5px;
-    padding: 0 auto;
-    border: 1px solid #999999;
-    margin-bottom: 10px;
+     padding: 0 auto;
+        margin: 0 auto;
+
 }
 
 #result {
@@ -97,7 +99,10 @@ img {
 
 
 canvas {
-        display: block;
+    max-width:100% !important;
+    height:auto;
+    display:block;
+      border-radius: 5px;
         padding: 0 auto;
         margin: 0 auto;
     }
@@ -106,10 +111,6 @@ canvas {
 @media screen and (min-width: 480px) {
     #query {
         font-size: 14px;
-    }
-    img{
-        width: 100%;
-        height: auto;
     }
 }
 
@@ -128,9 +129,6 @@ canvas {
 @media screen and (min-width: 1024px) {
     #query {
         font-size: 20px;
-    }
-    #wrapper {
-        width: 1024px;
     }
 
 }

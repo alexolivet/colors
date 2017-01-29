@@ -134,11 +134,12 @@ h1 {
   text-align: center; }
 
 img {
-  width: 60%;
+  max-width: 100% !important;
+  height: auto;
+  display: block;
   border-radius: 5px;
   padding: 0 auto;
-  border: 1px solid #999999;
-  margin-bottom: 10px; }
+  margin: 0 auto; }
 
 #result {
   width: 50%;
@@ -191,17 +192,16 @@ img {
   min-width: 180px; }
 
 canvas {
+  max-width: 100% !important;
+  height: auto;
   display: block;
+  border-radius: 5px;
   padding: 0 auto;
   margin: 0 auto; }
 
 @media screen and (min-width: 480px) {
   #query {
-    font-size: 14px; }
-
-  img {
-    width: 100%;
-    height: auto; } }
+    font-size: 14px; } }
 @media screen and (min-width: 640px) {
   #query {
     font-size: 16px; } }
@@ -210,9 +210,6 @@ canvas {
     font-size: 18px; } }
 @media screen and (min-width: 1024px) {
   #query {
-    font-size: 20px; }
-
-  #wrapper {
-    width: 1024px; } }
+    font-size: 20px; } }
 
 /*# sourceMappingURL=main_style.css.map */
