@@ -8,6 +8,7 @@
     min-width: 320px;
     background:no-repeat,center;
     background-size:cover;
+    z-index:100;
 }
 
 h1 {
@@ -90,6 +91,17 @@ img{
      font-weight: bold;
 }
 
+#bg {
+    position:fixed; 
+    top:0; 
+    left:0; 
+    width:100%; 
+    height:100%;
+    background:no-repeat,center;
+    background-size:cover;
+    z-index:-50;
+
+}
 
 canvas {
     max-width:100% !important;

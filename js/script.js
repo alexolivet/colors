@@ -1,3 +1,5 @@
+//window.onload = function () { alert("It's loaded!") } check if page is loaded
+
 //clear logs script for every tpe of browser
 //this makes it easier to debug
 console.API;
@@ -11,6 +13,20 @@ if (typeof console._commandLineAPI !== 'undefined') {
 }
 
 console.API.clear();
+
+
+
+
+//this function sets a random image as background
+var myPix = new
+Array("images/image1.jpg", "images/image2.jpg", "images/image3.jpg");
+
+function choosePic() {
+    var randomNum = Math.floor((Math.random() * myPix.length));
+    document.getElementById("bg").style.backgroundImage =
+        "url(" + myPix[randomNum] + ")";
+}
+window. onload = choosePic;
 
 
 // search the collection using a JSON call
@@ -89,7 +105,7 @@ function doSearch() {
 
                         });
                     });
-                }, 2500); //timeout ends
+                }, 3000); //timeout ends
                 resultD.innerHTML += "<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>";
             }
         });
@@ -103,7 +119,8 @@ $(document).on('click', '.anchor', 'img',function() {
     $("#colors").show(); // show the color div for color palette
     var imageSrc = $(this).attr('href'); //get the href of the painting from the anchor
     //console.log(imageSrc);
-   $('body').css('background-image', 'url("' + imageSrc + '")');//add selected image as body background image
+   //$('body').css('background-image', 'url("' + imageSrc + '")');//add selected image as body background image
+   document.getElementById("bg").style.backgroundImage='url('+imageSrc+')'; 
     var altText = $(this).attr('title'); //get the title of the painting from the title atribute
     var anchor_id = $(this).attr('data-id'); //get the value from the data id
     var c = document.getElementById("drawing1"); // this is the canvas

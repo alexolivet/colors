@@ -119,7 +119,8 @@ html, body {
   width: 100%;
   min-width: 320px;
   background: no-repeat,center;
-  background-size: cover; }
+  background-size: cover;
+  z-index: 100; }
 
 h1 {
   color: #E98977;
@@ -189,6 +190,16 @@ img {
 #row {
   color: #E98977;
   font-weight: bold; }
+
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: no-repeat,center;
+  background-size: cover;
+  z-index: -50; }
 
 canvas {
   max-width: 100% !important;
