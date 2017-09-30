@@ -1,3 +1,18 @@
+//clear logs script for every tpe of browser
+//this makes it easier to debug
+console.API;
+
+if (typeof console._commandLineAPI !== 'undefined') {
+    console.API = console._commandLineAPI; //chrome
+} else if (typeof console._inspectorCommandLineAPI !== 'undefined') {
+    console.API = console._inspectorCommandLineAPI; //Safari
+} else if (typeof console.clear !== 'undefined') {
+    console.API = console;
+}
+
+console.API.clear();
+
+
 // search the collection using a JSON call
 function search(query) {
     return $.getJSON("https://www.rijksmuseum.nl/api/en/collection?q=Q&key=r4nzV2tL&imgonly=True&ps=5&format=json".replace("Q", query));
@@ -8,6 +23,7 @@ searchBtn.addEventListener("click", doSearch);
 
 var resultD = document.getElementById("result");
 var searchField = document.getElementById("query");
+
 $("#colors").hide();
 
 //search function starts here
@@ -85,9 +101,9 @@ function doSearch() {
 //Then when you want to deal with the data from that particular record/image you would call it as such.
 $(document).on('click', '.anchor', 'img',function() {
     $("#colors").show(); // show the color div for color palette
-    var imageSrc = $(this).attr('href'); //get the src of the painting from the title atribute
+    var imageSrc = $(this).attr('href'); //get the href of the painting from the anchor
     //console.log(imageSrc);
-   $('body').css('background-image', 'url("' + imageSrc + '")');
+   $('body').css('background-image', 'url("' + imageSrc + '")');//add selected image as body background image
     var altText = $(this).attr('title'); //get the title of the painting from the title atribute
     var anchor_id = $(this).attr('data-id'); //get the value from the data id
     var c = document.getElementById("drawing1"); // this is the canvas
@@ -107,8 +123,8 @@ $(document).on('click', '.anchor', 'img',function() {
             return ('<div class="col-2" style="background-color:rgb(' + value.join(', ') + ')">'+value+'</div>'); // return the colors into the grid cell
         });
         $(".row").html(newHTML.join('')); // place the color palette into the dedicated place
-        var div = document.getElementById('row');
-        div.innerHTML += '<br><p>' + altText + '<p>';
+        var div = document.getElementById('row');//search for an element that has id row
+        div.innerHTML += '<br><p>' + altText + '<p>';//place the title of the painting in this element
 
 
 
