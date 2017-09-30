@@ -1,5 +1,4 @@
 //window.onload = function () { alert("It's loaded!") } check if page is loaded
-
 //clear logs script for every tpe of browser
 //this makes it easier to debug
 console.API;
@@ -26,7 +25,7 @@ function choosePic() {
     document.getElementById("bg").style.backgroundImage =
         "url(" + myPix[randomNum] + ")";
 }
-window. onload = choosePic;
+window.onload = choosePic;
 
 
 // search the collection using a JSON call
@@ -115,12 +114,12 @@ function doSearch() {
 
 //You want to utilize the .on event with jquery which allows you to deal with dynamic data which is basically what you are dealing with.
 //Then when you want to deal with the data from that particular record/image you would call it as such.
-$(document).on('click', '.anchor', 'img',function() {
+$(document).on('click', '.anchor', 'img', function() {
     $("#colors").show(); // show the color div for color palette
     var imageSrc = $(this).attr('href'); //get the href of the painting from the anchor
     //console.log(imageSrc);
-   //$('body').css('background-image', 'url("' + imageSrc + '")');//add selected image as body background image
-   document.getElementById("bg").style.backgroundImage='url('+imageSrc+')'; 
+    //$('body').css('background-image', 'url("' + imageSrc + '")');//add selected image as body background image
+    document.getElementById("bg").style.backgroundImage = 'url(' + imageSrc + ')';
     var altText = $(this).attr('title'); //get the title of the painting from the title atribute
     var anchor_id = $(this).attr('data-id'); //get the value from the data id
     var c = document.getElementById("drawing1"); // this is the canvas
@@ -136,14 +135,19 @@ $(document).on('click', '.anchor', 'img',function() {
         var colorThief = new ColorThief(); // color thief 
         var color = colorThief.getPalette(img, 10); // color palette - number of colors returned
         var newHTML = $.map(color, function(value) { // rgb value returned are then placed in csss inline style
-          console.log(value);
-            return ('<div class="col-2" style="background-color:rgb(' + value.join(', ') + ')">'+value+'</div>'); // return the colors into the grid cell
+
+            function rgbToHex(value) {//query to convert rgb to hex format
+                a = value
+                return "#" + ((1 << 24) + (+a[0] << 16) + (+a[1] << 8) + +a[2]).toString(16).slice(1)
+            }
+
+            console.log(rgbToHex(value));
+
+            return ('<div class="col-4" style="background-color:rgb(' + value.join(', ') + ')">' + rgbToHex(value) + '</div>'); // return the colors in hex format into the grid cell
         });
         $(".row").html(newHTML.join('')); // place the color palette into the dedicated place
-        var div = document.getElementById('row');//search for an element that has id row
-        div.innerHTML += '<br><p>' + altText + '<p>';//place the title of the painting in this element
-
-
+        var div = document.getElementById('row'); //search for an element that has id row
+        div.innerHTML += '<br><p>' + altText + '<p>'; //place the title of the painting in this element
 
     }, 1000); //timeout ends
 });
