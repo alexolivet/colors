@@ -118,14 +118,8 @@ html, body {
   padding: 0;
   width: 100%;
   min-width: 320px;
-  background-color: white;
-  background-image: -webkit-gradient(linear, right top, right top, from(white), to(beige));
-  background-image: -webkit-linear-gradient(top, white, beige);
-  background-image: -moz-linear-gradient(top, white, beige);
-  background-image: -ms-linear-gradient(top, white, beige);
-  background-image: -o-linear-gradient(top, white, beige);
-  background-image: linear-gradient(top, white, beige);
-  filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='white', end-colourStr='beige'); }
+  background: no-repeat,center;
+  background-size: cover; }
 
 h1 {
   color: #E98977;
@@ -134,12 +128,13 @@ h1 {
   text-align: center; }
 
 img {
-  max-width: 100% !important;
+  max-width: 50% !important;
   height: auto;
   display: block;
   border-radius: 5px;
   padding: 0 auto;
-  margin: 0 auto; }
+  margin: 0 auto;
+  border: 1px solid #999999; }
 
 #result {
   width: 50%;
@@ -190,6 +185,10 @@ img {
   font-size: 12px;
   color: #E98977;
   min-width: 180px; }
+
+#row {
+  color: #E98977;
+  font-weight: bold; }
 
 canvas {
   max-width: 100% !important;
