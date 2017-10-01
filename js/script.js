@@ -30,7 +30,7 @@ window.onload = choosePic;
 
 // search the collection using a JSON call
 function search(query) {
-    return $.getJSON("https://www.rijksmuseum.nl/api/en/collection?q=Q&key=r4nzV2tL&imgonly=True&ps=5&format=json".replace("Q", query));
+    return $.getJSON("https://www.rijksmuseum.nl/api/en/collection?q=Q&key=r4nzV2tL&imgonly=True&ps=5&format=jsonp".replace("Q", query));
 }
 
 var searchBtn = document.getElementById("search");
@@ -92,7 +92,7 @@ function doSearch() {
                 // });
 
                 setInterval(function() { //timeout starts
-                    $('img').on('load', function() {
+                    $('img').trigger('load', function() {
                         // need to get the image width and height therefore using onload
                         //   // Specify image dimensions for each image
 
@@ -104,7 +104,7 @@ function doSearch() {
 
                         });
                     });
-                }, 3000); //timeout ends
+                }, 5000); //timeout ends
                 resultD.innerHTML += "<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>";
             }
         });
