@@ -104,7 +104,7 @@ function doSearch() {
 
                             });
                         });
-                    }, 5000); //timeout ends
+                    }, 3000); //timeout ends
                     resultD.innerHTML += "<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>";
                 }
             });
@@ -150,7 +150,7 @@ $(document).on('click', '.anchor', 'img', function() {
         var div = document.getElementById('row'); //search for an element that has id row
         div.innerHTML += '<br><p>' + altText + '<p>'; //place the title of the painting in this element
 
-    }, 1000); //timeout ends
+    }, 500); //timeout ends
 });
 
 // this makes the canvas responsive
