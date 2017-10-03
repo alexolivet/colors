@@ -93,10 +93,10 @@ img{
     background-color: white;
     opacity: 0.9;
 }
-.col-4{
+.col-4, .col-2{
      color: #E98977;
      font-size: 28px;
-text-transform: uppercase;
+    text-transform: uppercase;
      font-weight: bold;
      border-radius:20%;
 }
@@ -111,6 +111,13 @@ text-transform: uppercase;
     background-size:cover;
     z-index:-50;
 
+}
+
+
+#row {  
+    font-size: 25px;
+    color: #E98977;
+    font-weight: bold;
 }
 
 
