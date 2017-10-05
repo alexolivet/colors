@@ -284,7 +284,7 @@ textarea {
     // Fixes validation messages for dynamic textareas
     &.validate + label {
       &::after {
-        top: calc(100% - 12px);
+        top: calc(100% - 27px);
       }
       &:not(.label-icon).active {
         transform: translateY(-25px);

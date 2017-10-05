@@ -14,8 +14,6 @@ if (typeof console._commandLineAPI !== 'undefined') {
 console.API.clear();
 
 
-
-
 //this function sets a random image as background
 var myPix = new
 Array("images/image1.jpg", "images/image2.jpg", "images/image3.jpg");
@@ -52,8 +50,7 @@ function doSearch() {
                     var rImg = document.createElement("img"); // create the image
                     rImg.src = data.artObjects[artObj].webImage.url; // the source of the image element is the url from rijks api
                     rImg.setAttribute("crossOrigin", "Anonymous"); //needed so I can actually copy the image for later use
-                    rImg.setAttribute("class", "imageClass"); // set image class to allow css
-
+                    rImg.setAttribute("class", "imageClass responsive-img"); // set image class to allow css
 
                     // rImg.onload = function(){ // need to get the image width and height therefore using onload
                     //   // Specify image dimensions for each image
@@ -73,9 +70,28 @@ function doSearch() {
                     // link.href = "www.example.com"; //can be done this way too
 
 
-                    var title = document.createElement("p"); //create paragraph for the title
-                    title.innerHTML = data.artObjects[artObj].title; // this is the title from rijks api
-                    resultD.appendChild(title); // append link with image to div
+                    var colSize= document.createElement("div"); 
+                    colSize.appendChild(link); 
+                     var span = '<span class="card-title">Card Title</span>'; 
+                     //var txt2= ' <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>'
+                    $(link).after(span);
+                    resultD.appendChild(colSize); 
+                    colSize.setAttribute("class", "card-image"); 
+
+
+
+                     var card= document.createElement("div"); 
+                    card.appendChild(colSize); 
+                    resultD.appendChild(card); 
+                    card.setAttribute("class", "card"); 
+                    
+
+                    var cardImage= document.createElement("div"); 
+                    cardImage.appendChild(card); 
+                    resultD.appendChild(cardImage);
+                    cardImage.setAttribute("class", "col s12");
+                    var title = data.artObjects[artObj].title;
+                     $('<div class="card-content"><p>'+title+'</p></div>').insertAfter(colSize);
 
                     $("#result img").each(function(i, image) { //for each image create a different id
                         image.id = "image" + (i + 1);
@@ -104,7 +120,7 @@ function doSearch() {
 
                             });
                         });
-                    }, 3000); //timeout ends
+                    }, 5000); //timeout ends
                     resultD.innerHTML += "<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>";
                 }
             });
