@@ -41,62 +41,12 @@
 @import "components/date_picker/default.date";
 @import "components/date_picker/default.time";
 
-@import "simple-grid";
 
- html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-width: 320px;
-    z-index:100;
-    text-align: center;
-
-}
-
-h1 {
-    color: #E98977;
-    font-weight: bold;
-    background-color: #F4DEC2;
-    text-align: center;
-}
-
-img{
-    display:block;
-    border-radius: 5px;
-     padding: 0 auto;
-        margin: 0 auto;
-    border: 1px solid #999999;
-  
-}
 
 #result {  
-    width: 50%;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
     color: #E98977;
     font-weight: bold;
 }
-
-
-.outer-input-div {
-    margin: 0 auto;
-}
-
-.inner-input-div {
-    padding: 20px;
-    margin: 0 auto;
-    width: 60%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-
 
 #query {
 	 outline: none;
@@ -112,13 +62,7 @@ img{
     background-color: white;
     opacity: 0.9;
 }
-.col-4, .col-2{
-     color: #E98977;
-     font-size: 28px;
-    text-transform: uppercase;
-     font-weight: bold;
-     border-radius:20%;
-}
+
 
 #bg {
     position:fixed; 
@@ -132,21 +76,22 @@ img{
 
 }
 
+// .outer-input-div {
+//     margin: 0 auto;
+// }
 
-#row {  
-    font-size: 25px;
-    color: #E98977;
-    font-weight: bold;
-}
+// .inner-input-div {
+//     padding: 20px;
+//     margin: 0 auto;
+//     width: 60%;
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: center;
+//     align-items: center;
+// }
 
 
-canvas {
-    max-width:100% !important;
-    height:auto;
-    display:block;
-      border-radius: 5px;
-        padding: 0 auto;
-        margin: 0 auto;
-    }
+
+
 
 

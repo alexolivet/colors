@@ -31,21 +31,21 @@ function search(query) {
     return $.getJSON("https://www.rijksmuseum.nl/api/en/collection?q=Q&key=r4nzV2tL&imgonly=True&ps=5&format=jsonp".replace("Q", query));
 }
 
-var searchBtn = document.getElementById("search");
-searchBtn.addEventListener("click", doSearch);
+var searchBtn = document.getElementById("search");//get the search bar
+searchBtn.addEventListener("keyup", doSearch);//while user type doSearch function kicks in
 
-var resultD = document.getElementById("result");
-var searchField = document.getElementById("query");
+var resultD = document.getElementById("result");//display the result in div
+var searchField = document.getElementById("search");//get the search bar content
 
 $("#colors").hide();
-
 //search function starts here
 function doSearch() {
-        $("#result").show(); // result div to show when making new search
-        resultD.innerHTML = "";
+        $("#result").show(); // result div to show when getting results from search
+        resultD.innerHTML = "";//at the beginning result div is empty
         var searchString = searchField.value;
         if (searchString !== "") {
             search(searchString).done(function(data) {
+                $("#progress").hide();
                 for (var artObj in data.artObjects) {
                     var rImg = document.createElement("img"); // create the image
                     rImg.src = data.artObjects[artObj].webImage.url; // the source of the image element is the url from rijks api
@@ -72,15 +72,15 @@ function doSearch() {
 
                     var colSize= document.createElement("div"); 
                     colSize.appendChild(link); 
-                     var span = '<span class="card-title">Card Title</span>'; 
-                     //var txt2= ' <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>'
-                    $(link).after(span);
+                   //  var span = '<span class="card-title">Card Title</span>'; 
+                    // var txt2= ' <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>'
+                   // $(link).after(txt2);
                     resultD.appendChild(colSize); 
                     colSize.setAttribute("class", "card-image"); 
 
 
 
-                     var card= document.createElement("div"); 
+                    var card= document.createElement("div"); 
                     card.appendChild(colSize); 
                     resultD.appendChild(card); 
                     card.setAttribute("class", "card"); 
@@ -89,7 +89,7 @@ function doSearch() {
                     var cardImage= document.createElement("div"); 
                     cardImage.appendChild(card); 
                     resultD.appendChild(cardImage);
-                    cardImage.setAttribute("class", "col s12");
+                    cardImage.setAttribute("class", "col s10");
                     var title = data.artObjects[artObj].title;
                      $('<div class="card-content"><p>'+title+'</p></div>').insertAfter(colSize);
 
@@ -121,7 +121,7 @@ function doSearch() {
                             });
                         });
                     }, 5000); //timeout ends
-                    resultD.innerHTML += "<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>";
+                    resultD.innerHTML += "<br><p>&nbsp;</p><br><br><p>&nbsp;</p><br>";
                 }
             });
         }
@@ -160,7 +160,7 @@ $(document).on('click', '.anchor', 'img', function() {
 
         //console.log(rgbToHex(value));
 
-            return ('<div class="col-4" style="background-color:rgb(' + value.join(', ') + ')">' + rgbToHex(value) + '</div>'); // return the colors in hex format into the grid cell
+            return ('<div class="col s2" style="background-color:rgb(' + value.join(', ') + ')">' + rgbToHex(value) + '</div>'); // return the colors in hex format into the grid cell
         });
         $(".row").html(newHTML.join('')); // place the color palette into the dedicated place
         var div = document.getElementById('row'); //search for an element that has id row

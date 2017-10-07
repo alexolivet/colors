@@ -229,7 +229,7 @@ $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width 
 // 13. Grid
 // ==========================================================================
 
-$num-cols: 12 !default;
+$num-cols: 10 !default; //  changed value from 12 to 10 to allow for nicer centering of cards on all devices
 $gutter-width: 1.5rem !default;
 $element-top-margin: $gutter-width/3 !default;
 $element-bottom-margin: ($gutter-width*2)/3 !default;
