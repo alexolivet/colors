@@ -41,26 +41,20 @@
 @import "components/date_picker/default.date";
 @import "components/date_picker/default.time";
 
+body{
+    font-size: 25px;
+}
 
-
-#result {  
+#result, #colors{  
     color: #E98977;
     font-weight: bold;
 }
 
-#query {
-	 outline: none;
-    display: inline-block;
-    border: 1px solid #cccccc;
-    font-weight: bold;
-    font-size: 19px;
-    min-width: 180px;
-}
 
 #colors{
 
     background-color: white;
-    opacity: 0.9;
+    padding:10px;
 }
 
 
@@ -75,20 +69,15 @@
     z-index:-50;
 
 }
+#searchBar{
+    display: block;
 
-// .outer-input-div {
-//     margin: 0 auto;
-// }
+}
 
-// .inner-input-div {
-//     padding: 20px;
-//     margin: 0 auto;
-//     width: 60%;
-//     display: flex;
-//     flex-wrap: wrap;
-//     justify-content: center;
-//     align-items: center;
-// }
+#selectedImage{
+    display: none;
+}
+
 
 
 

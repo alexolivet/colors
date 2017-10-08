@@ -6747,21 +6747,16 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   stroke-linecap: round;
   /*shape-rendering: crispEdges;*/ }
 
-#result {
+body {
+  font-size: 25px; }
+
+#result, #colors {
   color: #E98977;
   font-weight: bold; }
 
-#query {
-  outline: none;
-  display: inline-block;
-  border: 1px solid #cccccc;
-  font-weight: bold;
-  font-size: 19px;
-  min-width: 180px; }
-
 #colors {
   background-color: white;
-  opacity: 0.9; }
+  padding: 10px; }
 
 #bg {
   position: fixed;
@@ -6772,5 +6767,11 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   background: no-repeat,center;
   background-size: cover;
   z-index: -50; }
+
+#searchBar {
+  display: block; }
+
+#selectedImage {
+  display: none; }
 
 /*# sourceMappingURL=main_style.css.map */
