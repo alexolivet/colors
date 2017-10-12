@@ -16,7 +16,10 @@ console.API.clear();
 $("#selectedImage").hide(); //hides the nav bar 
 
 
-$("#colors").hide(); //hides the colors div we do not need it now
+$("#colors").hide(); //hide the colors div we do not need it now
+
+$("#preloader").hide(); //hide the preloader
+
 
 //this function sets a random image as background
 var myPix = new
@@ -34,22 +37,28 @@ window.onload = choosePic;
 
 // search the collection using a JSON call
 function search(query) {
-    return $.getJSON("https://www.rijksmuseum.nl/api/en/collection?q=Q&key=r4nzV2tL&imgonly=True&ps=5&format=jsonp".replace("Q", query));
+    return $.getJSON("https://www.rijksmuseum.nl/api/en/collection?q=Q&key=r4nzV2tL&imgonly=True&ps=6&format=jsonp".replace("Q", query));
 }
 
 var searchBtn = document.getElementById("search"); //get the search bar
+
 searchBtn.addEventListener("keyup", doSearch); //while user type doSearch function kicks in
+
+
 
 var resultD = document.getElementById("result"); //display the result in div
 //var searchField = document.getElementById("search");//get the search bar content
 
-
+var delayTimer; //part of timeout function
 //search function starts here
 function doSearch() {
+    $("#preloader").show(); //show the preloader
     $("#result").show(); // result div to show when getting results from search
     resultD.innerHTML = ""; //at the beginning result div is empty
     var searchString = searchBtn.value; //we use the data from the search bard
     if (searchString !== "") {
+        clearTimeout(delayTimer);//clear timeout first
+    delayTimer = setTimeout(function() {//set timeout start
         search(searchString).done(function(data) {
             for (var artObj in data.artObjects) { //looping through all the returned onjects
                 var principalOrFirstMaker = data.artObjects[artObj].principalOrFirstMaker // get the aritst name
@@ -57,7 +66,7 @@ function doSearch() {
                 var rImg = document.createElement("img"); // create the image
                 rImg.src = data.artObjects[artObj].webImage.url; // the source of the image element is the url from rijks api
                 rImg.setAttribute("crossOrigin", "Anonymous"); //needed so I can actually copy the image for later use
-                rImg.setAttribute("class", "imageClass responsive-img"); // set image class to allow css
+                rImg.setAttribute("class", "imageClass"); // set image class to allow css
                 rImg.setAttribute("alt", data.artObjects[artObj].principalOrFirstMaker); // add artist name in alt tag
                 rImg.setAttribute("title", data.artObjects[artObj].objectNumber); // add the object id to title tag
                 var link = document.createElement("a"); // create the link
@@ -79,14 +88,14 @@ function doSearch() {
                 var card = document.createElement("div");
                 card.appendChild(colSize);
                 resultD.appendChild(card);
-                card.setAttribute("class", "card large");
+                card.setAttribute("class", "card");
 
                 var cardImage = document.createElement("div");
                 cardImage.appendChild(card);
                 resultD.appendChild(cardImage);
-                cardImage.setAttribute("class", "col s10");
+                cardImage.setAttribute("class", "col l4 m10 s8");
                 var title = data.artObjects[artObj].title;
-                $('<div class="card-content"><p>' + title + '</p><p> by ' + principalOrFirstMaker + '</p></div>').insertAfter(colSize);
+                $('<div class="card-content"><div class="section"><p class="flow-text">' + title + '</p></div><p> by ' + principalOrFirstMaker + '</p></div>').insertAfter(colSize);
 
                 $("#result img").each(function(i, image) { //for each image create a different id
                     image.id = "image" + (i + 1);
@@ -97,7 +106,7 @@ function doSearch() {
                     anchor.setAttribute('onclick', 'return false;'); // return false needed so image does not jump when clicked
                     anchor.setAttribute('data-id', +(i + 1)); // set different data-id attribute needed for on event
                 });
-
+                $("#preloader").hide(); //hide the preloader
                 setTimeout(function() { //timeout starts
                     $('img').trigger('load', function() {
                         // need to get the image width and height therefore using onload
@@ -110,11 +119,12 @@ function doSearch() {
 
                         });
                     });
-                }, 5000); //timeout ends
-                resultD.innerHTML += "<br><p>&nbsp;</p><br><br><p>&nbsp;</p><br>";
+                }, 2000); //timeout ends
+                resultD.innerHTML += "<p></p>";
             }
         });
-    }
+    }, 2000); // Will do the ajax stuff after 2000 ms later
+}
 } //search function ends here
 
 function rgbToHex(value) { //query to convert rgb to hex format
@@ -165,7 +175,7 @@ $(document).ready(function() { //document ready starts
                         $(".row").html(newHTML.join('')); // place the color palette into the dedicated place
 
                         var resultColors = document.getElementById("colors"); //display the result in div
-                        resultColors.innerHTML += '<div class="col s10"><div class="card"><div class="card-content"><p>Title: ' + paintTitle + '</p><p>' + altDescription + '</p><p>Artist: ' + altArtist + '</p></div></div></div>'; //place the title of the painting in this element
+                        resultColors.innerHTML += '<div class="col l10 m10 s8"><div class="card"><div class="card-content"><div class="section"><p>Title: ' + paintTitle + '</p></div><div class="section"><div class="section"><p>' + altDescription + '</p></div><div class="section"><p>Artist: ' + altArtist + '</p></div></div></div></div>'; //place the title of the painting in this element
 
 
 

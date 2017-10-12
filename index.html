@@ -12,11 +12,13 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    </head>
    <body>
+       <!-- search nav bar -->
       <nav id="searchBar">
-         <div class="nav-wrapper" >
+         <div class="nav-wrapper">
             <a href="#!" class="brand-logo right hide-on-small-only">Colors Like Masters</a>
             <form>
                <div class="input-field">
+
                   <input id="search" type="search"  placeholder="Artist, Painting, or anything!" required>
                   <label class="label-icon " value="Search" id="search" for="search"><i class="material-icons">search</i></label>
                   <i class="material-icons">close</i>
@@ -36,10 +38,14 @@
          <!--bavkground image-->
          <div id="bg"></div>
          <!--images display here start-->
-         <div class="row" id="result"> </div>
+         <div id="result" class="cards-container"> </div>
          <!--images display here end-->
          <canvas id="drawing1">Your browser does not support the HTML5 canvas tag.</canvas>
          <div class="row" id="colors">
+         </div>
+         <!-- preloader -->
+         <div class="progress" id="preloader">
+            <div class="indeterminate" ></div>
          </div>
       </div>
       <!--container ends-->
