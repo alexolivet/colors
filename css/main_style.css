@@ -2507,7 +2507,7 @@ nav ul a span.badge {
 .container {
   margin: 0 auto;
   max-width: 1280px;
-  width: 90%; }
+  width: 95%; }
 
 @media only screen and (min-width: 601px) {
   .container {
@@ -6836,14 +6836,13 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   /*shape-rendering: crispEdges;*/ }
 
 body {
-  width: 100%; }
+  height: 100%; }
 
 #result, #colors {
   color: #E98977;
   font-weight: bold; }
 
 #colors {
-  background-color: white;
   padding: 10px; }
 
 #bg {
@@ -6857,10 +6856,18 @@ body {
   z-index: -50; }
 
 #searchBar {
-  display: block; }
+  display: inline-block; }
 
 #selectedImage {
   display: none; }
+
+.swatch {
+  width: 20px;
+  height: 20px;
+  float: left;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 4px; }
 
 .cards-container {
   column-break-inside: avoid; }
