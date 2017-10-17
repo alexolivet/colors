@@ -155,34 +155,34 @@ $(document).ready(function () { //document ready starts
                     console.log(json);
                     console.log(json.artObject.dimensions.length);
                     var paintColors = json.artObject.colors;
-                    if(json.artObject.dimensions.length > 2){   
-                    
-                    var imageType = json.artObject.dimensions[0].type + ':';
-                    var imageUnit = json.artObject.dimensions[0].unit + ' / ';
-                    var imageValue = json.artObject.dimensions[0].value;
+                    if (json.artObject.dimensions.length > 2) {
 
-                     var imageTypeWidth = json.artObject.dimensions[1].type + ':';
-                    var imageUnitWidth = json.artObject.dimensions[1].unit;
-                    var imageValueWidth = json.artObject.dimensions[1].value;
+                        var imageType = json.artObject.dimensions[0].type + ':';
+                        var imageUnit = json.artObject.dimensions[0].unit + ' / ';
+                        var imageValue = json.artObject.dimensions[0].value;
 
-                    //this array is not empty 
-                    }else{
-                      imageType = ''
-                      imageUnit = ''
-                      imageValue = ''
-                      imageTypeWidth = ''
-                      imageUnitWidth = ''
-                      imageValueWidth= ''
+                        var imageTypeWidth = json.artObject.dimensions[1].type + ':';
+                        var imageUnitWidth = json.artObject.dimensions[1].unit;
+                        var imageValueWidth = json.artObject.dimensions[1].value;
+
+                        //this array is not empty 
+                    } else {
+                        imageType = ''
+                        imageUnit = ''
+                        imageValue = ''
+                        imageTypeWidth = ''
+                        imageUnitWidth = ''
+                        imageValueWidth = ''
 
 
                     }
-                    
+
                     var paintTitle = json.artObject.title;
                     var altDescription = json.artObject.label.description; //get the description of the painting from the title atribute
                     var altArtist = json.artObject.label.makerLine; //get the alt of the painting from the anchor
                     $("#result").hide(); // result div is no longer needed - so hide it
                     var resultColors = document.getElementById("colors"); //display the result in div
-                    $(resultColors).append('<div class="col l6 m10 s10"><div class="card hoverable"><div class="card-image"><img src="' + imageSrc + '"></div><div class="card-content"><span class="card-title activator grey-text text-darken-4">' + paintTitle + '<i class="material-icons right">more_vert</i></span></div> <div class="card-reveal"> <span class="card-title grey-text text-darken-4">'+paintTitle+'<i class="material-icons right">close</i></span><p> '+altDescription+'</p><p>Artist: ' + altArtist + '</p><p id="dimensions">'+imageType+'  '+imageValue+imageUnit+' '+imageTypeWidth+'  '+imageValueWidth+imageUnitWidth+'</p>Main colors:<p class="color_thief"></p> </div></div></div>');
+                    $(resultColors).append('<div class="col l6 m10 s10"><div class="card hoverable"><div class="card-image"><img src="' + imageSrc + '"></div><div class="card-content"><span class="card-title activator grey-text text-darken-4">' + paintTitle + '<i class="material-icons right">more_vert</i></span></div> <div class="card-reveal"> <span class="card-title grey-text text-darken-4">' + paintTitle + '<i class="material-icons right">close</i></span><p> ' + altDescription + '</p><p>Artist: ' + altArtist + '</p><p id="dimensions">' + imageType + '  ' + imageValue + imageUnit + ' ' + imageTypeWidth + '  ' + imageValueWidth + imageUnitWidth + '</p>Main colors:<p class="color_thief"></p> </div></div></div>');
                     //  resultColors.innerHTML += '<div class="col l4 m10 s10"><div class="card"><div class="card-content"><div class="section"><p>Title: ' + paintTitle + '</p></div><div class="section"><div class="section"><p>' + altDescription + '</p></div><div class="section"><p>Artist: ' + altArtist + '</p></div></div></div></div>'; //place the title of the painting in this element
 
                     setTimeout(function () { //timeout starts
