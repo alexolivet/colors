@@ -41,83 +41,81 @@
 @import "components/date_picker/default.date";
 @import "components/date_picker/default.time";
 
-body{
+body {
     height: 100%;
 }
 
-#result, #colors{  
+#result,
+#colors {
     color: #E98977;
     font-weight: bold;
 }
 
 
-#colors{
-
+#colors {
     // background-color: white;
-    padding:10px;
+    padding: 10px;
 }
 
 
 #bg {
-    position:fixed; 
-    top:0; 
-    left:0; 
-    width:100%; 
-    height:100%;
-    background:no-repeat,center;
-    background-size:cover;
-    z-index:-50;
-
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: no-repeat, center;
+    background-size: cover;
+    z-index: -50;
 }
-#searchBar{
+
+#searchBar {
     display: inline-block;
-
 }
 
-#selectedImage{
+#selectedImage {
     display: none;
 }
 
 .swatch {
-  width:20px;
-  height:20px;
-  float: left;
-  margin: 0 10px;
-  cursor: pointer;
-  border-radius: 4px;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 4px;
 }
 
 // mansory
 .cards-container {
-  column-break-inside: avoid;
+    column-break-inside: avoid;
 }
+
 .cards-container .card {
-  display: inline-block;
-  overflow: visible;
+    display: inline-block;
+    overflow: visible;
 }
 
 @media only screen and (max-width: 600px) {
-  .cards-container {
-    -webkit-column-count: 1;
-    -moz-column-count: 1;
-    column-count: 1;
-  }
+    .cards-container {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+    }
 }
+
 @media only screen and (min-width: 601px) {
-  .cards-container {
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    column-count: 2;
-  }
+    .cards-container {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
 }
+
 @media only screen and (min-width: 993px) {
-  .cards-container {
-    -webkit-column-count: 3;
-    -moz-column-count: 3;
-    column-count: 3;
-  }
+    .cards-container {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+    }
 }
-
-
-
-

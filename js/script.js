@@ -52,8 +52,8 @@ function doSearch() {
     var searchString = searchBtn.value; //we use the data from the search bard
     if (searchString !== "") {
         clearTimeout(delayTimer); //clear timeout first
-        delayTimer = setTimeout(function () { //set timeout start
-            search(searchString).done(function (data) {
+        delayTimer = setTimeout(function() { //set timeout start
+            search(searchString).done(function(data) {
                 for (var artObj in data.artObjects) { //looping through all the returned onjects
                     var principalOrFirstMaker = data.artObjects[artObj].principalOrFirstMaker // get the aritst name
                     var objectNumber = data.artObjects[artObj].id // get the object id
@@ -91,21 +91,21 @@ function doSearch() {
                     var title = data.artObjects[artObj].title;
                     $('<div class="card-content"><div class="section"><p class="flow-text black-text">' + title + '</p></div><p> by ' + principalOrFirstMaker + '</p></div>').insertAfter(colSize);
 
-                    $("#result img").each(function (i, image) { //for each image create a different id
+                    $("#result img").each(function(i, image) { //for each image create a different id
                         image.id = "image" + (i + 1);
                     });
 
-                    $("#result a").each(function (i, anchor) { //for each anchor set the following attributes:
+                    $("#result a").each(function(i, anchor) { //for each anchor set the following attributes:
                         //anchor.id = "anchor" + (i + 1);
                         anchor.setAttribute('onclick', 'return false;'); // return false needed so image does not jump when clicked
                         anchor.setAttribute('data-id', +(i + 1)); // set different data-id attribute needed for on event
                     });
                     $("#preloader").hide(); //hide the preloader
-                    setTimeout(function () { //timeout starts
-                        $('img').trigger('load', function () {
+                    setTimeout(function() { //timeout starts
+                        $('img').trigger('load', function() {
                             // need to get the image width and height therefore using onload
                             // Specify image dimensions for each image
-                            $('img').each(function () {
+                            $('img').each(function() {
                                 var findImgWidth = $(this).width();
                                 var findImgHeight = $(this).height();
                                 $(this).attr('width', findImgWidth);
@@ -127,11 +127,11 @@ function rgbToHex(value) { //query to convert rgb to hex format
     return "#" + ((1 << 24) + (+a[0] << 16) + (+a[1] << 8) + +a[2]).toString(16).slice(1)
 };
 
-$(document).ready(function () { //document ready starts
+$(document).ready(function() { //document ready starts
 
     //You want to utilize the .on event with jquery which allows you to deal with dynamic data which is basically what you are dealing with.
     //Then when you want to deal with the data from that particular record/image you would call it as such.
-    $(document).on('click', '.anchor', 'img', function () {
+    $(document).on('click', '.anchor', 'img', function() {
         $("#colors").show(); // show the color div for color palette
         $("#searchBar").hide();
         $("#selectedImage").show();
@@ -150,7 +150,7 @@ $(document).ready(function () { //document ready starts
             $('#colors').html("<h2 >We are sorry! An error occured. Please try refresh the page and try again.</h2>");
 
         } else {
-            $.getJSON("https://www.rijksmuseum.nl/api/en/collection/" + objectId + "?key=r4nzV2tL&format=json", function (json) {
+            $.getJSON("https://www.rijksmuseum.nl/api/en/collection/" + objectId + "?key=r4nzV2tL&format=json", function(json) {
                 if (json != "Nothing found.") { //start search
                     console.log(json);
                     console.log(json.artObject.dimensions.length);
@@ -160,7 +160,6 @@ $(document).ready(function () { //document ready starts
                         var imageType = json.artObject.dimensions[0].type + ':';
                         var imageUnit = json.artObject.dimensions[0].unit + ' / ';
                         var imageValue = json.artObject.dimensions[0].value;
-
                         var imageTypeWidth = json.artObject.dimensions[1].type + ':';
                         var imageUnitWidth = json.artObject.dimensions[1].unit;
                         var imageValueWidth = json.artObject.dimensions[1].value;
@@ -185,10 +184,10 @@ $(document).ready(function () { //document ready starts
                     $(resultColors).append('<div class="col l6 m10 s10"><div class="card hoverable"><div class="card-image"><img src="' + imageSrc + '"></div><div class="card-content"><span class="card-title activator grey-text text-darken-4">' + paintTitle + '<i class="material-icons right">more_vert</i></span></div> <div class="card-reveal"> <span class="card-title grey-text text-darken-4">' + paintTitle + '<i class="material-icons right">close</i></span><p> ' + altDescription + '</p><p>Artist: ' + altArtist + '</p><p id="dimensions">' + imageType + '  ' + imageValue + imageUnit + ' ' + imageTypeWidth + '  ' + imageValueWidth + imageUnitWidth + '</p>Main colors:<p class="color_thief"></p> </div></div></div>');
                     //  resultColors.innerHTML += '<div class="col l4 m10 s10"><div class="card"><div class="card-content"><div class="section"><p>Title: ' + paintTitle + '</p></div><div class="section"><div class="section"><p>' + altDescription + '</p></div><div class="section"><p>Artist: ' + altArtist + '</p></div></div></div></div>'; //place the title of the painting in this element
 
-                    setTimeout(function () { //timeout starts
+                    setTimeout(function() { //timeout starts
                         var colorThief = new ColorThief(); // color thief 
                         var color = colorThief.getPalette(img, 10); // color palette - number of colors returned
-                        var newHTML = $.map(color, function (value) { // rgb value returned are then placed in csss inline style
+                        var newHTML = $.map(color, function(value) { // rgb value returned are then placed in csss inline style
                             //rgbToHex; //get the hex code from value
                             return ('<div class="col s1"><div class="swatch pulse" style="background-color:rgb(' + value.join(', ') + ')"></div></div>'); // return the colors in hex format into the grid cell
                         });
