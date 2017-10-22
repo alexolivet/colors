@@ -273,6 +273,17 @@ video.responsive-video {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 /*********************
   Transition Classes
 **********************/
@@ -285,6 +296,17 @@ ul.staggered-list li {
     opacity: 0;
     transform-origin: 0 50%;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -366,7 +388,7 @@ ul.staggered-list li {
 
 // Footer
 .page-footer {
-    padding-top: 20px;
+    padding-top: 0px; //removed padding top. it was 20px
     color: $footer-font-color;
     background-color: $footer-bg-color;
 
@@ -379,6 +401,9 @@ ul.staggered-list li {
         color: $footer-copyright-font-color;
         background-color: $footer-copyright-bg-color;
         @extend .light;
+    }
+    .footer-copyright a {
+        margin: 5px;
     }
 }
 
@@ -720,6 +745,17 @@ th {
         right: -8%;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

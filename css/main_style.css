@@ -2187,7 +2187,7 @@ ul.staggered-list li {
     text-align: center; } }
 
 .page-footer {
-  padding-top: 20px;
+  padding-top: 0px;
   color: #fff;
   background-color: #ee6e73; }
   .page-footer .footer-copyright {
@@ -2198,6 +2198,8 @@ ul.staggered-list li {
     padding: 10px 0px;
     color: rgba(255, 255, 255, 0.8);
     background-color: rgba(51, 51, 51, 0.08); }
+  .page-footer .footer-copyright a {
+    margin: 5px; }
 
 table,
 th,
@@ -6853,7 +6855,12 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   /*shape-rendering: crispEdges;*/ }
 
 body {
-  height: 100%; }
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+
+main {
+  flex: 1 0 auto; }
 
 #result,
 #colors {

@@ -132,6 +132,7 @@ $(document).ready(function() { //document ready starts
     $(document).on('click', '.anchor', 'img', function() {
         $("#colors").show(); // show the color div for color palette
         $("#searchBar").hide();
+        $("#result_page").hide();
         $("#info").hide();
         $("#selectedImage").show();
         var imageSrc = $(this).attr('href'); //get the href of the painting from the anchor
