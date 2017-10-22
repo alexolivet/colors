@@ -4,13 +4,32 @@
 <head>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Colors Like Masters</title>
-    <meta name="description" content="Demo for using Rijksmuseum API to display some of its data">
+    <title>Colors like Masters</title>
+    <meta name="description" content="Rijksmuseum API to display technical data and colors of a painting">
     <meta name="author" content="Alex Olivet Fernandez">
     <!--Import main style file-->
     <link rel="stylesheet" type="text/css" href="css/main_style.css" media="screen,projection">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
 </head>
 
 <body>
@@ -20,7 +39,8 @@
     <nav id="searchBar">
         <div class="nav-wrapper">
             <a href="#!" class="brand-logo right hide-on-small-only">Colors Like Masters</a>
-            <form>
+            <!-- onkeydown to prevent return key to send form content -->
+            <form onkeydown="return !(event.keyCode==13)">
                 <div class="input-field">
                     <input id="search" type="search" placeholder="Artist, Painting, or anything!" required>
                     <label class="label-icon " value="Search" id="search" for="search"><i class="material-icons">search</i></label>
@@ -36,6 +56,21 @@
             <a href="javascript:location.reload(true)" class="brand-logo left"><i class="material-icons">arrow_back</i></a>
         </div>
     </nav>
+    <!-- Modal Structure start-->
+    <a class="waves-effect waves-light btn right" onclick="$('#modal1').modal('open');"><i class="fa fa-info" aria-hidden="true"></i></a>
+    <div id="modal1" class="modal top-sheet">
+        <div class="modal-content">
+            <h4>COLORS like Master</h4>
+            <p>1. Use the search button to search for anything. An artist, painting or something!</p>
+            <p>2. Select any image by clicking on the + button.</p>
+            <p>3. Technical details of the selected painting will be provided algonside the main colors of the painting..</p>
+            <p>Note: Not all paintings have detailed information.</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">close</a>
+        </div>
+    </div>
+    <!-- Modal Structure end -->
     <!--container starts-->
     <div class="container">
         <!--images display here start-->

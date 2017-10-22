@@ -14,10 +14,7 @@ console.API.clear();
 
 
 $("#selectedImage").hide(); //hides the nav bar 
-
-
 $("#colors").hide(); //hide the colors div we do not need it now
-
 $("#preloader").hide(); //hide the preloader
 
 
@@ -100,7 +97,7 @@ function doSearch() {
                         anchor.setAttribute('onclick', 'return false;'); // return false needed so image does not jump when clicked
                         anchor.setAttribute('data-id', +(i + 1)); // set different data-id attribute needed for on event
                     });
-                    $("#preloader").hide(); //hide the preloader
+
                     setTimeout(function() { //timeout starts
                         $('img').trigger('load', function() {
                             // need to get the image width and height therefore using onload
@@ -116,6 +113,7 @@ function doSearch() {
                     }, 2000); //timeout ends
                     $('<button class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></button>').insertAfter(rImg);
                     resultD.innerHTML += "<p></p>";
+                    $("#preloader").hide(); //hide the preloader
                 }
             });
         }, 2000); // Will do the ajax stuff after 2000 ms later

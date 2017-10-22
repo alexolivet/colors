@@ -3,4 +3,5 @@
       $('.materialboxed').materialbox();
       $('.slider').slider();
       $('.chips').material_chip();
+      $('#modal1').modal();
   });
