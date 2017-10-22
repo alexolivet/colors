@@ -43,7 +43,7 @@
             <form onkeydown="return !(event.keyCode==13)">
                 <div class="input-field">
                     <input id="search" type="search" placeholder="Artist, Painting, or anything!" required>
-                    <label class="label-icon " value="Search" id="search" for="search"><i class="material-icons">search</i></label>
+                    <label class="label-icon " value="Search" for="search"><i class="material-icons">search</i></label>
                     <i class="material-icons">close</i>
                 </div>
             </form>
@@ -57,7 +57,7 @@
         </div>
     </nav>
     <!-- Modal Structure start-->
-    <a class="waves-effect waves-light btn right" onclick="$('#modal1').modal('open');"><i class="fa fa-info" aria-hidden="true"></i></a>
+    <a class="waves-effect waves-light btn" onclick="$('#modal1').modal('open');" id="info"><i class="fa fa-info" aria-hidden="true"></i></a>
     <div id="modal1" class="modal top-sheet">
         <div class="modal-content">
             <h4>COLORS like Master</h4>

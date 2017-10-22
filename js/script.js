@@ -132,6 +132,7 @@ $(document).ready(function() { //document ready starts
     $(document).on('click', '.anchor', 'img', function() {
         $("#colors").show(); // show the color div for color palette
         $("#searchBar").hide();
+        $("#info").hide();
         $("#selectedImage").show();
         var imageSrc = $(this).attr('href'); //get the href of the painting from the anchor
         document.getElementById("bg").style.backgroundImage = 'url(' + imageSrc + ')'; //image selected is placed as background
@@ -179,7 +180,7 @@ $(document).ready(function() { //document ready starts
                     var altArtist = json.artObject.label.makerLine; //get the alt of the painting from the anchor
                     $("#result").hide(); // result div is no longer needed - so hide it
                     var resultColors = document.getElementById("colors"); //display the result in div
-                    $(resultColors).append('<div class="col l6 m10 s10"><div class="card hoverable"><div class="card-image"><img src="' + imageSrc + '"></div><div class="card-content"><span class="card-title activator grey-text text-darken-4">' + paintTitle + '<i class="material-icons right">more_vert</i></span></div> <div class="card-reveal"> <span class="card-title grey-text text-darken-4">' + paintTitle + '<i class="material-icons right">close</i></span><p> ' + altDescription + '</p><p>Artist: ' + altArtist + '</p><p id="dimensions">' + imageType + '  ' + imageValue + imageUnit + ' ' + imageTypeWidth + '  ' + imageValueWidth + imageUnitWidth + '</p>Main colors:<p class="color_thief"></p> </div></div></div>');
+                    $(resultColors).append('<div class="col l10 m10 s10"><div class="card hoverable"><div class="card-image"><img src="' + imageSrc + '"></div><div class="card-content"><span class="card-title activator grey-text text-darken-4">' + paintTitle + '<i class="material-icons right">more_vert</i></span></div> <div class="card-reveal"> <span class="card-title grey-text text-darken-4">' + paintTitle + '<i class="material-icons right">close</i></span><p> ' + altDescription + '</p><p>Artist: ' + altArtist + '</p><p id="dimensions">' + imageType + '  ' + imageValue + imageUnit + ' ' + imageTypeWidth + '  ' + imageValueWidth + imageUnitWidth + '</p>Main colors:<p class="color_thief"></p> </div></div></div>');
                     //  resultColors.innerHTML += '<div class="col l4 m10 s10"><div class="card"><div class="card-content"><div class="section"><p>Title: ' + paintTitle + '</p></div><div class="section"><div class="section"><p>' + altDescription + '</p></div><div class="section"><p>Artist: ' + altArtist + '</p></div></div></div></div>'; //place the title of the painting in this element
 
                     setTimeout(function() { //timeout starts
